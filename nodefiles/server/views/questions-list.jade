@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    title Bootstrap Example
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+  body
+    .container
+      h2(align='center') List Of Questions :
+      for question,i in questions
+        .panel.panel-primary
+          .panel-heading
+            h2.panel-title Question #{i}: 
+          .panel-body 
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title Problem Title:
+              .panel-body #{question.title}
+                
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title Problem Desc: 
+              .panel-body #{question.description}
+                
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title Problem URL: 
+              .panel-body 
+                  a(href="http://localhost:8888/compile?qid=#{question._id}") Link
+

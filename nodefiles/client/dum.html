@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Pie Chart</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
+    <script type="text/javascript" scr="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="canvas-holder" style="width:50%">
+        <canvas id="mychart" width="300" height="300" />
+    </div>
+<script>
+$(document).ready(function(){
+var ctx = $("#mychart").get(0).getContext("2d");
+
+
+
+var data = {
+    labels: [
+        "Red",
+        "Blue",
+        "Yellow"
+    ],
+    datasets: [
+        {
+            data: [300, 50, 100],
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ]
+        }]
+};
+
+var options={};
+var myPieChart = new Chart(ctx,{
+    type: 'doughnut',
+    data: data,
+    options: options
+});
+
+});
+</script>
+</html>

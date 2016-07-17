@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+       
+        <link rel="stylesheet" href="css/style.css"> 
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+        <script type="text/javascript">
+
+			  	function sendAjax () {
+			  		
+			  		var username=document.getElementById("login-name").value;
+			  		var given_password=document.getElementById("login-pass").value;
+
+				  	$.ajax({
+				      url: '/login',
+				      type: 'POST',
+				      data: { userid:username,password:given_password },
+				      success: function(result) {
+				        if(result=='invalid-user')
+				        {
+				        	document.getElementById("alertbox").innerHTML="Invalid Username";
+				        }
+				        else
+				        {
+					        if(result=='invalid-password')
+					        {
+							document.getElementById("alertbox").innerHTML="Invalid password";
+					        }
+					        else
+					        {
+					        document.getElementById("alertbox").innerHTML="";
+
+					        	window.location.assign('http://localhost:8888/compile?qid=57881cf1134faf6b1426b2c8');
+
+					        }
+				    	}
+				    }
+			  	});
+
+				  }
+
+
+  </script>
+    
+  </head>
+
+    <body>
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h1>Login</h1>
+			</div>
+				
+			<div class="login-form">
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="username" id="login-name" name="user[name]">
+				<label class="login-field-icon fui-user" for="login-name"></label>
+				</div>
+
+				<div class="control-group">
+				<input type="password" class="login-field" value="" placeholder="password" id="login-pass" name="user[password]">
+				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				</div>
+
+				<button class="btn btn-primary btn-large btn-block" onclick="sendAjax()">Login
+				</button>
+				<a class="login-link" href="#">Lost your password?</a>
+
+			</div>
+			<div class="alert alert-danger" id="alertbox">
+			</div>
+
+		
+		</div>
+	</div>
+    
+  </body>
+  
+</html>
